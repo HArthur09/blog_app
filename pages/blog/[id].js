@@ -8,6 +8,7 @@ import React,
 import { useRouter } from 'next/router';
 import Navbar from '@/Components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Image from 'next/image';
 
 const BlogDetails = () => {
 
@@ -26,13 +27,11 @@ const BlogDetails = () => {
              style={{ marginTop: '5rem' }}>
             <Navbar />
             <div className="card mt-5">
-                <img src={blogDetail === undefined ? 'error' : blogDetail.imageUrl}
-                    style={
-                        {
-                            maxWidth: '100%',
-                            maxHeight: '300px'
-                        }}
-                    className="card-img-top" alt="Blog" />
+                <div className="card-img-top">
+                <Image src={blogDetail === undefined ? '/images/no_image.jpeg' : blogDetail.imageUrl}
+                    className="card-img-top" alt="Blog" width={300} height={300}/>
+                </div>
+                
                 <div className="card-body">
                     <h1 className="card-title">{blogDetail === undefined ? 'error' : blogDetail.title}</h1>
                     <p className="card-text">
