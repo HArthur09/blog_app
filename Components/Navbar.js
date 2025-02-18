@@ -1,9 +1,18 @@
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
+import { useEffect } from 'react';
+
+
+
 
 const Navbar = () => {
+    useEffect(() => {
+        import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    }, []);
     return (
+        
         <div>
             {/*code pour le button GFG Blogs */}
             <nav className="navbar navbar-expand-lg navbar-light 
@@ -15,8 +24,8 @@ const Navbar = () => {
                     </Link>
                     <button className="navbar-toggler"
                         type="button" 
-                        data-toggle="collapse"
-                        data-target="#navbarNav" 
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" 
                         aria-controls="navbarNav"
                         aria-expanded="false" 
                         aria-label="Toggle navigation">
@@ -24,13 +33,10 @@ const Navbar = () => {
                     </button>
 
                     {/*code pour le lien Home et create new blog */}
-                    <div className="collapse navbar-collapse" 
-                         id="navbarNav">
+                    <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link href="/"
-                                    className="nav-item nav-link 
-                                               text-light">
+                                <Link href="/" className="nav-item nav-link text-light">
                                     Home
                                 </Link>
                             </li>

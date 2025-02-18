@@ -1,0 +1,28 @@
+body {
+    background-color: azure; 
+    color: #333;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1, h5 {
+    color: #343a40; 
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Animation de survol */
+}
+.card-img-top {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}

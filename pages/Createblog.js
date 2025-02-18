@@ -1,27 +1,30 @@
 // Createblog.js
 
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '@/Components/Navbar';
+import { useRouter } from 'next/router';
+
+
 
 const Createblog = () => {
     const [author, setAuthor] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const initialBlogs =
-        typeof window !== 'undefined' ?
-            JSON.parse(localStorage.getItem('myData')) || [] : [];
+    const initialBlogs = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('myData')) || [] : [];
     const [data, setData] = useState(initialBlogs);
+    const router = useRouter() 
 
     useEffect(() => {
         // Save habits to localStorage whenever they change
-        localStorage.setItem('myData', JSON.stringify(data));
+        
     }, [data]);
 
     const addData = () => {
         const currentDate = new Date().toLocaleDateString();
+        
         const newData =
         {
             id: data.length + 1,
@@ -29,14 +32,17 @@ const Createblog = () => {
             date: currentDate,
             title: title,
             description: description,
-            imageUrl: imageUrl
+            imageUrl : imageUrl === '' ? 'images/no_image.jpeg' : imageUrl 
+            
         };
         const updatedData = [...data, newData];
-        setData(updatedData);
+        localStorage.setItem('myData', JSON.stringify(updatedData));
         setAuthor('');
         setTitle('');
         setDescription('');
         setImageUrl('');
+        router.back()
+
     };
 
     return (

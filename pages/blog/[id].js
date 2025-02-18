@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BlogDetails = () => {
 
-    const [blogDetail, setBlogDetail] = useState([]);
+    const [blogDetail, setBlogDetail] = useState({});
     const router = useRouter();
     const { id } = router.query;
     useEffect(() => {
@@ -19,18 +19,14 @@ const BlogDetails = () => {
         const selectedBlog=blogs.find(blog => blog.id === parseInt(id));
         setBlogDetail(selectedBlog);
     }, [id]);
-
-
-    if (!blogDetail) {
-        return <div>Loading...</div>;
-    }
+    
 
     return (
         <div className="container bg-light" 
              style={{ marginTop: '5rem' }}>
             <Navbar />
             <div className="card mt-5">
-                <img src={blogDetail.imageUrl}
+                <img src={blogDetail === undefined ? 'error' : blogDetail.imageUrl}
                     style={
                         {
                             maxWidth: '100%',
@@ -38,14 +34,14 @@ const BlogDetails = () => {
                         }}
                     className="card-img-top" alt="Blog" />
                 <div className="card-body">
-                    <h1 className="card-title">{blogDetail.title}</h1>
+                    <h1 className="card-title">{blogDetail === undefined ? 'error' : blogDetail.title}</h1>
                     <p className="card-text">
-                        {blogDetail.description}
+                        {blogDetail === undefined ? 'error' : blogDetail.description}
                     </p>
                     <p className="card-text">
-                        Author: {blogDetail.author}
+                        Author: {blogDetail === undefined ? 'error' : blogDetail.author}
                     </p>
-                    <p className="card-text">Date: {blogDetail.date}</p>
+                    <p className="card-text">Date: {blogDetail === undefined ? 'error' : blogDetail.date}</p>
                 </div>
             </div>
         </div>
