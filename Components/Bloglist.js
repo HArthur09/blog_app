@@ -32,9 +32,7 @@ function Bloglist() {
 
     let filteredData = data;
     if (searchQuery.trim() !== '') {
-        filteredData = data.filter(item =>
-            item.title.toLowerCase()
-                .includes(searchQuery.toLowerCase())
+        filteredData = data.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
     };
 

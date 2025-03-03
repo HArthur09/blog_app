@@ -70,8 +70,7 @@ const Createblog = () => {
                             className="form-control mb-2"
                             placeholder="Description"
                             value={description}
-                            onChange={(e) => setDescription(e.target
-                                                             .value)}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                         <input
                             type="text"

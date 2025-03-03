@@ -20,6 +20,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="them-color" content='white' />
+        <link rel="manifest" href="manifest.json"/>
+        <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
+      </head>
       <body>
         {children}
       </body>
